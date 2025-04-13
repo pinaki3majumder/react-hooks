@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import Search from "./components/Search";
+import Counter from "./components/Counter";
 
 function App() {
   const style = {
@@ -59,6 +60,10 @@ function App() {
 
   return (
     <>
+      <Counter />
+      <br />
+      <br />
+      <br />
       <div style={style}>
         <button
           onClick={shuffle}
