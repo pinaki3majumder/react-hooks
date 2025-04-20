@@ -2,10 +2,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type InitialState = {
   value: 0;
+  isLoading: boolean;
 };
 
 const initialState: InitialState = {
   value: 0,
+  isLoading: false,
 };
 
 const counter = createSlice({
@@ -27,13 +29,14 @@ const counter = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(incremnentAsync.pending, () => {
-        console.log("--pending--");
+      .addCase(incremnentAsync.pending, (state) => {
+        state.isLoading = true;
       })
       .addCase(
         incremnentAsync.fulfilled,
         (state, action: PayloadAction<number>) => {
           state.value += action.payload;
+          state.isLoading = false;
         }
       );
   },
