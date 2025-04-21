@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import Search from "./Search";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../../redux/store";
 
 function List() {
   const style = {

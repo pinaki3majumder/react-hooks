@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import {
   incrementByAmount,
   incremnentAsync,
   minus,
   plus,
   reset,
-} from "../redux/slices/counter";
+} from "../../redux/slices/counter";
 import React, { useState } from "react";
 
 function Counter() {

@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
-import FlexContainer from "./components/FlexContainer";
-import { RootState } from "./redux/store";
+import Layout from "./layout/Layout";
 
 function App() {
-  const isLoading = useSelector((state: RootState) => state.count.isLoading);
-
-  return <>{!isLoading ? <FlexContainer /> : <h1>Loading...</h1>}</>;
+  return (
+    <>
+      <Layout />
+    </>
+  );
 }
 
 export default App;
