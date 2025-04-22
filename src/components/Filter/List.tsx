@@ -1,13 +1,17 @@
 import { useCallback, useState } from "react";
 import Search from "./Search";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { RootState } from "../../redux/store";
+import { useLocation } from "react-router";
 
 function List() {
   const style = {
     display: "flex",
     gap: "50px",
   };
+
+  const location = useLocation();
+  const { pathname } = location;
 
   const [originalStateList] = useState([
     "West Bengal",
@@ -21,8 +25,6 @@ function List() {
   const counterVal = useSelector((state: RootState) => state.count.value);
 
   const shuffle = () => {
-    console.log("shuffle clicked");
-
     setStateList((prevState) => {
       if (prevState.length < 2) return prevState;
 
@@ -59,6 +61,10 @@ function List() {
 
   return (
     <>
+      {pathname}
+
+      <br />
+      <br />
       <div style={style}>
         <button
           onClick={shuffle}
@@ -67,7 +73,7 @@ function List() {
             cursor: stateList.length <= 1 ? "not-allowed" : "pointer",
           }}
         >
-          SHUFFLE LIST ({counterVal})
+          SHUFFLE LIST {pathname !== "/cb" && "(" + counterVal + ")"}
         </button>
         <Search onDeck={filterList} />
       </div>

@@ -12,6 +12,11 @@ function Home() {
         </li>
         <li>
           <h3>
+            <Link to="/cb">Memo & Callback Func</Link>
+          </h3>
+        </li>
+        <li>
+          <h3>
             <Link to="/gql">GRAPHQL API</Link>
           </h3>
         </li>

@@ -5,8 +5,6 @@ interface SearchProps {
 }
 
 function Search({ onDeck }: SearchProps) {
-  console.log("Search COMP INIT----------------");
-
   return <input type="text" onKeyUp={onDeck} />;
 }
 

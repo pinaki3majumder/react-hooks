@@ -1,8 +1,8 @@
 import Counter from "./Counter";
-import List from "./Filter/List";
+import List from "../Filter/List";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import Loader from "../Loader";
+import Loader from "../Common/Loader";
 
 function FlexContainer() {
   const containerStyle: React.CSSProperties = {
