@@ -1,6 +1,7 @@
 const SkeletonCard = ({ count = 12 }) => {
   return (
     <div
+      data-testid="loading-skeleton"
       style={{
         display: "flex",
         flexWrap: "wrap",

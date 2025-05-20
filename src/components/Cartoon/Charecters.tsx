@@ -1,33 +1,16 @@
-import { gql, useLazyQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import SkeletonCard from "../Common/Skeleton/SkeletonCard";
+import style from "./Charecters.module.css";
+import { GET_CHARACTERS } from "../../graphql/queries";
 
-interface CharacterType {
+type CharacterType = {
   name: string;
   image: string;
   gender: string;
   id: string;
-}
-const FILTER_OPTIONS = ["All", "Male", "Female"];
-
-const filterStyle: React.CSSProperties = {
-  display: "flex",
-  gap: "10px",
-  justifyContent: "center",
 };
-
-const GET_CHARACTERS = gql`
-  query GetCharacters($gender: String) {
-    characters(filter: { gender: $gender }) {
-      results {
-        id
-        name
-        image
-        gender
-      }
-    }
-  }
-`;
+const FILTER_OPTIONS = ["All", "Male", "Female"];
 
 function Charecters() {
   const [charactersData, setCharactersData] = useState<CharacterType[]>([]);
@@ -92,27 +75,25 @@ function Charecters() {
     <>
       {error && <h1>Error fetching characters!</h1>}
 
-      <div style={filterStyle}>
+      <div className={style.filterPanel}>
         <h2>Filter:</h2>
 
         {FILTER_OPTIONS.map((val) => {
           const isSelected = activeFilter === val;
-          const allButtonsDisabled = loading || loadingImages; // ✅ Add this
+          const allButtonsDisabled = loading || loadingImages;
 
           return (
             <button
               key={val}
               value={val}
               onClick={handleFilter}
-              disabled={isSelected || allButtonsDisabled} // ✅ Combine both conditions
+              disabled={isSelected || allButtonsDisabled}
+              className={style.filterButtons}
               style={{
-                padding: "6px 12px",
-                border: "1px solid gray",
-                borderRadius: "6px",
                 backgroundColor: isSelected ? "#007BFF" : "#f1f1f1",
                 color: isSelected ? "white" : "black",
                 fontWeight: isSelected ? "bold" : "normal",
-                cursor: allButtonsDisabled ? "not-allowed" : "pointer", // ✅ cursor logic
+                cursor: allButtonsDisabled ? "not-allowed" : "pointer",
                 opacity: isSelected || allButtonsDisabled ? 0.6 : 1,
               }}
             >
@@ -123,15 +104,7 @@ function Charecters() {
       </div>
 
       {/* Cards Section */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "20px",
-          padding: "20px",
-          justifyContent: "space-around",
-        }}
-      >
+      <div className={style.cardContainer}>
         {/* Skeletons */}
         {isLoading && <SkeletonCard count={skeletonCount} />}
 

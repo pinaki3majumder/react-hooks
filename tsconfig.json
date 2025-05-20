@@ -5,6 +5,19 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "jsx": "react"
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["es2015", "dom"],
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "declaration": false,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "types": ["vitest/globals", "node"] // Add Jest types
+  },
+  "include": ["tests/*.test.tsx","tests/*.test.ts", "tests/components/Home.test.tsx"],
+  "ts-node": {
+    "esm": true
   }
 }

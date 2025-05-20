@@ -5,14 +5,14 @@ import Sidebar from "./Sidebar";
 
 function Layout() {
   return (
-    <>
+    <div data-testid="layout-wrapper">
       <Header />
       <main>
         <Sidebar />
         <Content />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
